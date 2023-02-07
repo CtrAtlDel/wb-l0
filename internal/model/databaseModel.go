@@ -14,7 +14,6 @@ func InitDb() error {
 	if err != nil {
 		log.Println(err)
 	}
-	//defer db.Close() // why this need ?
 	err = Db.Ping()
 	if err != nil {
 		log.Println(err)

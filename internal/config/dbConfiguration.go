@@ -1,4 +1,4 @@
-package db
+package config
 
 const (
 	Host     = "localhost"

@@ -27,6 +27,10 @@ func InitCache() {
 	}
 }
 
+func InsertModelInCache(m *m.Model) {
+	cache.items[m.OrderUId] = *m
+}
+
 func FoundModelInCacheById(id string) (*m.Model, bool) {
 	model, ok := cache.items[id]
 

@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
 	"github.com/nats-io/stan.go"
-	c "ivankvasov/project/internal/config"
+	c "ivankvasov/project/internal/cache"
 	"ivankvasov/project/internal/controller"
 	"ivankvasov/project/internal/model"
 	m "ivankvasov/project/internal/model"

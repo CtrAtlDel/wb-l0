@@ -1,18 +1,18 @@
 package service
 
 import (
-	"ivankvasov/project/internal/config"
+	"ivankvasov/project/internal/cache"
 	m "ivankvasov/project/internal/model"
 	"ivankvasov/project/internal/repository"
 )
 
 func InsertModel(m *m.Model) {
-	config.InsertModelInCache(m)
+	cache.InsertModelInCache(m)
 	repository.InsertModel(m)
 }
 
 func GetModelById(id string) *m.Model {
-	model, ok := config.FoundModelInCacheById(id)
+	model, ok := cache.FoundModelInCacheById(id)
 	if ok {
 		return model
 	}

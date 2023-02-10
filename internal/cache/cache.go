@@ -1,4 +1,4 @@
-package config
+package cache
 
 import (
 	m "ivankvasov/project/internal/model"

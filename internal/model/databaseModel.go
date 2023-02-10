@@ -2,14 +2,24 @@ package model
 
 import (
 	"database/sql"
+	"github.com/joho/godotenv"
 	"log"
+	"os"
 )
 
 var Db *sql.DB
 
 func InitDb() error {
-	connectDbStr := "user=postgres password=postgres host=localhost dbname=postgres port=5432  sslmode=disable"
-	var err error
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Println(err)
+	}
+	usr := os.Getenv("Username")
+	psw := os.Getenv("Password")
+	port := os.Getenv("Port")
+	host := os.Getenv("Host")
+	dbname := os.Getenv("Dbname")
+	connectDbStr := "user=" + usr + " password=" + psw + " host=" + host + " dbname=" + dbname + " port=" + port + " sslmode=disable"
 	Db, err = sql.Open("postgres", connectDbStr)
 	if err != nil {
 		log.Println(err)

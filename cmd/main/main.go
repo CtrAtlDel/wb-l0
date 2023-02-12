@@ -31,7 +31,7 @@ func main() {
 	router.HandleFunc("/models/{id}", controller.GetModelHandler).Methods("GET")
 	router.HandleFunc("/model", controller.PostModelHandler).Methods("POST")
 	http.Handle("/", router)
-
+	fmt.Println("Subscriber working...")
 	sc, err := stan.Connect("test-cluster", "13", stan.NatsURL(natsUrl))
 	if err != nil {
 		log.Println(err)
@@ -42,7 +42,7 @@ func main() {
 			log.Println(err)
 		}
 	}(sc)
-	fmt.Println("Subscriber working...")
+
 	if _, err := sc.Subscribe("my-channel", func(ms *stan.Msg) {
 		var model m.Model
 
